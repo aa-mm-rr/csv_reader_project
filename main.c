@@ -16,7 +16,7 @@
 #define MAX_TEMP 200
 
 
-//trims leadimg and trailing space
+//trims leading and trailing space
 void trim(char *s) {
     char *start = s;
     while (*start && isspace((unsigned char)*start)) {
