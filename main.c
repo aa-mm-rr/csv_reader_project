@@ -15,6 +15,8 @@
 #define MAX_ROOMS 50
 #define MAX_TEMP 200
 
+
+//trims leadimg and trailing space
 void trim(char *s) {
     char *start = s;
     while (*start && isspace((unsigned char)*start)) {
@@ -30,6 +32,7 @@ void trim(char *s) {
     }
 }
 
+//finds index of room by name
 int find_room(const char rooms[][MAX_ROOM_NAME_LEN], const int count, const char *name) {
     for (int i = 0; i < count; i++) {
         if (strcmp(rooms[i], name) == 0) {
@@ -39,6 +42,7 @@ int find_room(const char rooms[][MAX_ROOM_NAME_LEN], const int count, const char
     return -1;
 }
 
+//reads file and stores data
 int read_csv(const char *filename, char rooms[][MAX_ROOM_NAME_LEN], int *room_count, float temps[][MAX_TEMP], int temp_counts[]) {
     FILE *fp = fopen(filename, "r");
     if (!fp) {
@@ -89,7 +93,7 @@ int read_csv(const char *filename, char rooms[][MAX_ROOM_NAME_LEN], int *room_co
     return 0;
 }
 
-
+//prints temperature line
 void print_temp_line(float temp) {
     printf("%5.1f", temp);
     if (temp < 0.0f || temp > 30.0f) {
