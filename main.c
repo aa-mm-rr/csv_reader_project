@@ -14,6 +14,7 @@
 #define MAX_ROOM_NAME_LEN 64
 #define MAX_ROOMS 50
 #define MAX_TEMP 200
+#define FILENAME "../Temperatures.csv"
 
 
 //trims leading and trailing space
@@ -109,7 +110,6 @@ void print_temp_line(float temp) {
 }
 
 int main(void) {
-    char filename[128];
     char rooms[MAX_ROOMS][MAX_ROOM_NAME_LEN];
     float temps[MAX_ROOMS][MAX_TEMP];
     int temp_counts[MAX_ROOMS];
@@ -118,21 +118,8 @@ int main(void) {
     for (int i = 0; i < MAX_ROOMS; i++) {
         temp_counts[i] = 0;
     }
-
-    printf("Enter CSV filename: ");
-    if (!fgets(filename, sizeof(filename), stdin)) {
-        fprintf(stderr, "Could not read file %s\n", filename);
-        return 1;
-    }
-    filename[strcspn(filename, "\r\n")] = '\0';
-    trim(filename);
-
-    if (filename[0] == '\0') {
-        fprintf(stderr, "No filename provided\n");
-        return 1;
-    }
-
-    int rc = read_csv(filename, rooms, &rooms_count, temps, temp_counts);
+    printf("Reading data from file: %s\n", FILENAME);
+    int rc = read_csv(FILENAME, rooms, &rooms_count, temps,temp_counts);
     if (rc != 0) {
         return rc;
     }
