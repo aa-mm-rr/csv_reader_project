@@ -1,6 +1,6 @@
 ﻿# csv_reader_project
 
-I chose CSV Reader as my final project.
+For my final assignment in basic C programming course I chose CSV Reader as my final project.
 Description:
 
 CSV (Comma-Separated Values) files are a common way to store tabular data, making them a 
@@ -15,3 +15,4 @@ temperatures in the range of 0 – 30 are printed as horizontal bars. Temperatur
 the range are printed as a single X on the lee. If the selected room does not exist, then program must 
 print an error message. Program must detect number of rooms and their names from the CSV file, 
 there may not any fixed room names
+
